@@ -1,0 +1,78 @@
+<html>
+<head>
+<title> Validation form </title>
+</head>
+<body>
+
+<form id="validate">
+firstname: <input type="text" name="firstname" placeholder="firstname"  id="userid"/><br><br>
+lastname: <input type="text" name="lastname" placeholder="lastname"  id="userid"/><br><br>
+Password: <input type="password" placeholder="password" value="password" id="password" /><br><br>
+Email: <input type="text" placeholder="email-id" id="emailid"/><br><br>
+
+arrival time: <input type="datetime-local" min="12am" max="12pm"/><br><br>
+    contact number: <input type="number" id="contact number"/><br><br>
+    Purpose:<input type="text" id="purpose"/><br><br>
+                     </form>
+    <input type="button" id="submit" value="submit" onclick="validatefunction()"/>
+<div>
+<p id="invalid1"> </p>
+<p id="invalid2"> </p>
+<p id="invalid3"> </p>
+</div>
+
+<script language="javascript">
+function validatefunction()
+{
+  var firstname;
+  $firstname = document.getElementById('userid').value;
+    var lastname;
+  $lastname = document.getElementById('userid').value;
+  var password;
+  $password= document.getElementById("password").value;
+  var email;
+  $email= document.getElementById("emailid").value;
+
+    var letternum = /^([0-9]|[a-z])+([0-9a-z]+)$/i; 
+    //var number = /[0-9]/;
+  // var valid = number.test($username)  letter.test($username); 
+    var validemail= (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test($email));
+    
+  
+    if(letternum)
+    {
+      document.getElementById('invalid1').innerHTML= " firstname:" +$firstname;
+         document.getElementById('invalid1').innerHTML= " firstname:" +$lastname;
+    }
+    else
+    {
+      document.getElementById('invalid1').innerHTML= " Incorrect username! " ;
+       
+     }
+
+    if($password.length<8)
+    {
+       document.getElementById('invalid2').innerHTML= " Minimum length of password should be 8!" ;
+      
+    }
+    else
+    {
+       document.getElementById('invalid2').innerHTML= "   Password:" +$password;
+       
+    }
+
+    if(validemail)
+    {
+      document.getElementById('invalid3').innerHTML= "  Email-id: " +$email;
+    }
+    else
+    {
+      document.getElementById('invalid3').innerHTML= " Invalid email-id " ;
+       
+    }
+
+}
+
+</script>
+</body>
+</html>
